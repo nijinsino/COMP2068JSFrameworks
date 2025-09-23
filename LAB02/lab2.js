@@ -25,3 +25,14 @@ const schema = {
     },
   },
 };
+
+
+// this will generate computer
+//  move based on random number
+function getComputerSelection() {
+  const r = Math.random();
+  if (r <= 0.34) return "PAPER";
+  if (r <= 0.67) return "SCISSORS";
+  return "ROCK";
+}
+
