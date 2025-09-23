@@ -51,7 +51,7 @@ async function main() {
 
     //this will start the prompt
   prompt.start();
-  try {
+  
     //this will ask user for an input and read their choice
     const { userSelection } = await prompt.get(schema);
     const user = userSelection.trim().toUpperCase();
@@ -61,10 +61,8 @@ console.log(`\nUser chose: ${user}`);
     console.log(`Computer chose: ${computer}`);
     //display winner
     console.log(`\n${decideWinner(user, computer)}`);
-  } catch (err) {
-    console.error("\nExiting...");
-    process.exit(1);
   }
-}
+ 
+
 
 main();
