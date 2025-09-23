@@ -1,6 +1,6 @@
 // LAB02 
 //  Rock Paper Scissors 
-
+//200594634
 const prompt = require("prompt");
 
 
@@ -66,3 +66,6 @@ console.log(`\nUser chose: ${user}`);
 
 
 main();
+
+
+//completed LAB02
