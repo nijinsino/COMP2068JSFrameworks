@@ -1,2 +1,72 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!-- Hero Section -->
+<section id="home" class="card hero">
+  <h1>Hi, I'm Nijin 👋</h1>
+  <p class="lead">
+    A Computer Programming student at Georgian College passionate about web development, problem-solving, and coding cool projects.
+  </p>
+  <a href="#projects" class="btn">View My Work</a>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section card">
+  <h2>About Me</h2>
+  <p>
+    I’m currently studying Computer Programming at Georgian College. I enjoy learning how to build web applications using modern tools like Node.js, Express, and Handlebars.
+  </p>
+  <p>
+    Coding isn’t just my coursework — it’s also my hobby. I spend time exploring new frameworks, experimenting with code, and solving challenges. My goal is to grow into a full-stack web developer and work on projects that make a real impact.
+  </p>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="section card">
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> JavaScript, Python, Java, C++</li>
+    <li><strong>Web:</strong> HTML5, CSS3, Node.js, Express, Handlebars</li>
+    <li><strong>Tools:</strong> Git, GitHub, VS Code, Postman</li>
+  </ul>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="section card">
+  <h2>Projects</h2>
+
+  <div class="project">
+    <h3>Portfolio Website</h3>
+    <p>This website you are viewing right now! Built using Node.js, Express, and Handlebars. Hosted on Render.</p>
+    <a href="https://github.com/YOUR_GITHUB/portfolio" target="_blank" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project">
+    <h3>Weather App</h3>
+    <p>A simple weather application that fetches real-time weather data using an API.</p>
+    <a href="https://github.com/YOUR_GITHUB/weather-app" target="_blank" class="btn">View on GitHub</a>
+  </div>
+
+  <div class="project">
+    <h3>To-Do App</h3>
+    <p>A task manager application where users can add, edit, and delete tasks — built with vanilla JavaScript.</p>
+    <a href="https://github.com/YOUR_GITHUB/todo-app" target="_blank" class="btn">View on GitHub</a>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section card contact-section">
+  <h2>Contact Me</h2>
+  <p>Interested in working together or just want to say hi? Send me a message below 👇</p>
+
+  <form method="POST" action="/contact">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required />
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required />
+
+    <label for="message">Message</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+
+    <button class="btn" type="submit">Send</button>
+  </form>
+</section>
+

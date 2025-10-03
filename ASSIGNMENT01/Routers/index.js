@@ -6,6 +6,13 @@ var router = express.Router();
 
 
 
+
+router.get('/', (req, res) => {
+  res.render('index', { title: 'My Portfolio' });
+});
+
+module.exports = router;
+
 // home page route
 router.get('/', (req, res) => 
   res.render('index', { title: 'Home' })

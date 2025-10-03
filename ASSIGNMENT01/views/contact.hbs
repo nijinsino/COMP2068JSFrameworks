@@ -1,0 +1,21 @@
+<h1>Contact Me</h1>
+
+{{#if error}}
+  <p style="color:#b00020">{{error}}</p>
+{{/if}}
+{{#if flash}}
+  <p style="color:green">{{flash}}</p>
+{{/if}}
+
+<form method="post" action="/contact">
+  <label>Name</label>
+  <input name="name" value="{{form.name}}" />
+
+  <label>Email</label>
+  <input name="email" type="email" value="{{form.email}}" />
+
+  <label>Message</label>
+  <textarea name="message">{{form.message}}</textarea>
+
+  <button class="btn" type="submit">Send</button>
+</form>

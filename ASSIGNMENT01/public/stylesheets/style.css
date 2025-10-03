@@ -1,8 +1,168 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* ===== Base ===== */
+:root{
+  --blue:#0a4e9b;
+  --blue-2:#0f61bd;
+  --ink:#1f2937;
+  --muted:#6b7280;
+  --bg:#f7f8fb;
+  --card:#ffffff;
+  --line:#e5e7eb;
+}
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+  color:var(--ink);
+  background:var(--bg);
 }
 
-a {
-  color: #00B7FF;
+/* sticky footer layout */
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
 }
+.main{ flex:1; padding:40px 0; }
+
+/* shared width */
+.container{
+  max-width:1100px;           /* wide but not edge-to-edge */
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* header bar */
+.header{
+  background:#0a4e9b;
+  color:#fff;
+}
+
+/* the row that holds logo + nav */
+.header-row{
+  display:flex;
+  align-items:center;           /* ✅ vertically centers BOTH sides */
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+
+/* logo text */
+.logo{
+  display:inline-flex;          /* ✅ gives line-height control + center */
+  align-items:center;           /* ✅ centers text within its box */
+  height:40px;                  /* consistent height with links */
+  line-height:1;                /* remove extra baseline wiggle */
+  margin:0;                     /* remove default h2/p margins if any */
+  font-size:22px;
+  font-weight:700;
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:.3px;
+}
+
+/* nav container */
+.nav{ display:flex; align-items:center; }
+
+/* link list */
+.nav-links{
+  display:flex;
+  align-items:center;           /* ✅ aligns each <a> on the same line */
+  gap:24px;
+  list-style:none;
+  margin:0;                     /* remove UL default margin */
+  padding:0;                    /* remove UL default padding */
+}
+
+/* each link */
+.nav-links a{
+  display:inline-flex;          /* ✅ consistent vertical centering */
+  align-items:center;
+  justify-content:center;
+  height:40px;                  /* same as .logo height */
+  padding:0 10px;               /* horizontal breathing room */
+  color:#fff;
+  text-decoration:none;
+  font-weight:500;
+  border-radius:6px;
+  transition:background .2s ease;
+}
+
+/* hover/active visuals (optional) */
+.nav-links a:hover{ background:rgba(255,255,255,.18); }
+.nav-links a.active{ background:#fff; color:#0a4e9b; font-weight:600; }
+
+
+
+/* ===== Footer ===== */
+.footer{
+  background:var(--blue);
+  color:#fff;
+}
+.footer-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 0;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.footer-links{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0;
+}
+.footer a{ color:#dbeafe; text-decoration:none; }
+.footer a:hover{ text-decoration:underline; }
+.contact-section {
+  text-align: center;
+}
+
+.contact-section form {
+  margin: 0 auto;
+}
+
+/* ===== Content helpers ===== */
+.section{ margin:24px 0; }
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,.05);
+}
+
+/* headings & buttons */
+h1{ font-size:32px; margin:0 0 12px; color:var(--blue); }
+p.lead{ color:var(--muted); margin-top:8px; }
+.btn{
+  display:inline-block;
+  background:var(--blue-2);
+  color:#fff;
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,.05);
+}
+.btn:hover{ filter:brightness(.96); }
+
+/* forms */
+form{
+  background:#fff;
+  padding:18px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  max-width:520px;
+}
+label{ display:block; margin:10px 0 6px; }
+input,textarea{
+  width:100%;
+  padding:10px;
+  border:1px solid #cdd3da;
+  border-radius:8px;
+  margin-bottom:12px;
+  font:inherit;
+}
+button{ all:unset; }
+button.btn{ cursor:pointer; }
