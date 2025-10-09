@@ -1,12 +1,29 @@
-<!-- Footer -->
-<footer class="footer">
-  <div class="container footer-row">
-    <p>© {{year}} My Portfolio</p>
-    <p class="footer-links">
-      <a href="https://github.com/YOUR_GITHUB" target="_blank">GitHub</a>
-      <span>·</span>
-      <a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank">LinkedIn</a>
-    </p>
+<footer class="site-footer">
+  <div class="container footer-simple">
+    <!-- Blurb -->
+ 
+
+    <!-- Categories -->
+    <nav class="footer-cats">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Socials -->
+    <div class="footer-socials">
+      <a href="{{profile.github}}" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="{{profile.linkedin}}" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:{{profile.email}}" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-row">
+      <p>© {{year}} <strong>{{profile.name}}</strong></p>
+      <p class="footer-links-inline">
+        <a href="/privacy">Privacy Policy</a> | <a href="/terms">Terms &amp; Conditions</a>
+      </p>
+    </div>
   </div>
 </footer>
-{{!-- this is the shared footer --}}

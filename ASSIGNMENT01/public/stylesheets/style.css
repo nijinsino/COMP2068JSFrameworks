@@ -1,23 +1,38 @@
-/* ===== Base ===== */
+/*this is the main base*/
 :root{
-  --blue:#0a4e9b;
-  --blue-2:#0f61bd;
-  --ink:#1f2937;
-  --muted:#6b7280;
-  --bg:#f7f8fb;
-  --card:#ffffff;
-  --line:#e5e7eb;
+  --red:#e63946;
+  --red-2:#ff4d5a;
+  --ink:#e5e5e5;
+  --muted:#b5b5b5;
+  --bg:#121212;
+  --card:#1e1e1e;
+  --line:#2a2a2a;
 }
+
 *{ box-sizing:border-box; }
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* html */
+
 html,body{ height:100%; }
 body{
   margin:0;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
   color:var(--ink);
   background:var(--bg);
+  animation: fadeIn 0.8s ease-in;
 }
 
-/* sticky footer layout */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* footer 
+layout */
 .page{
   min-height:100vh;
   display:flex;
@@ -25,144 +40,289 @@ body{
 }
 .main{ flex:1; padding:40px 0; }
 
-/* shared width */
+/* this is 
+shared width */
 .container{
-  max-width:1100px;           /* wide but not edge-to-edge */
+  max-width:1100px;
   margin:0 auto;
   padding:0 20px;
 }
 
-/* header bar */
-.header{
-  background:#0a4e9b;
-  color:#fff;
+/* main
+  header*/
+.header {
+  background: linear-gradient(90deg, #1a1a1a, #121212);
+  border-bottom: 1px solid var(--line);
+  color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  animation: slideDown 0.6s ease-out;
 }
 
-/* the row that holds logo + nav */
-.header-row{
-  display:flex;
-  align-items:center;           /* ✅ vertically centers BOTH sides */
-  justify-content:space-between;
-  gap:16px;
-  padding:14px 0;
+/*here i have added some 
+ Smooth fade and slide animation when it is loaded */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-/* logo text */
-.logo{
-  display:inline-flex;          /* ✅ gives line-height control + center */
-  align-items:center;           /* ✅ centers text within its box */
-  height:40px;                  /* consistent height with links */
-  line-height:1;                /* remove extra baseline wiggle */
-  margin:0;                     /* remove default h2/p margins if any */
-  font-size:22px;
-  font-weight:700;
-  color:#fff;
-  text-decoration:none;
-  letter-spacing:.3px;
+/* here it is the  
+row that holds logo and nav links */
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
 }
 
-/* nav container */
-.nav{ display:flex; align-items:center; }
-
-/* link list */
-.nav-links{
-  display:flex;
-  align-items:center;           /* ✅ aligns each <a> on the same line */
-  gap:24px;
-  list-style:none;
-  margin:0;                     /* remove UL default margin */
-  padding:0;                    /* remove UL default padding */
+/* in this one for logo
+ it gives red color shade */
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--red);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-/* each link */
-.nav-links a{
-  display:inline-flex;          /* ✅ consistent vertical centering */
-  align-items:center;
-  justify-content:center;
-  height:40px;                  /* same as .logo height */
-  padding:0 10px;               /* horizontal breathing room */
-  color:#fff;
-  text-decoration:none;
-  font-weight:500;
-  border-radius:6px;
-  transition:background .2s ease;
+.logo:hover {
+  color: var(--red-2);
+  transform: scale(1.08);
 }
 
-/* hover/active visuals (optional) */
-.nav-links a:hover{ background:rgba(255,255,255,.18); }
-.nav-links a.active{ background:#fff; color:#0a4e9b; font-weight:600; }
-
-
-
-/* ===== Footer ===== */
-.footer{
-  background:var(--blue);
-  color:#fff;
-}
-.footer-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.footer-links{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  margin:0;
-}
-.footer a{ color:#dbeafe; text-decoration:none; }
-.footer a:hover{ text-decoration:underline; }
-.contact-section {
-  text-align: center;
+/* optional subtle
+ glow behind the logo */
+.logo::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.contact-section form {
-  margin: 0 auto;
+.logo:hover::after {
+  opacity: 1;
 }
 
-/* ===== Content helpers ===== */
+/* navigation container */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* this one gives underline for all  */
+.nav-links a {
+  position: relative;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: var(--red);
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: var(--red);
+}
+
+.nav-links a.active {
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* ===== Card / Section ===== */
 .section{ margin:24px 0; }
 .card{
   background:var(--card);
   border:1px solid var(--line);
   border-radius:12px;
   padding:20px;
-  box-shadow:0 6px 18px rgba(0,0,0,.05);
+  box-shadow:0 6px 18px rgba(0,0,0,.3);
 }
 
-/* headings & buttons */
-h1{ font-size:32px; margin:0 0 12px; color:var(--blue); }
+/* Headings */
+h1,h2,h3{
+  color:var(--red);
+}
 p.lead{ color:var(--muted); margin-top:8px; }
-.btn{
-  display:inline-block;
-  background:var(--blue-2);
-  color:#fff;
-  text-decoration:none;
-  padding:10px 14px;
-  border-radius:8px;
-  border:1px solid rgba(0,0,0,.05);
-}
-.btn:hover{ filter:brightness(.96); }
 
-/* forms */
+/* Buttons */
+.btn {
+  display:inline-block;
+  background-color: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--red-2);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Projects hover */
+.project:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(255, 77, 90, 0.2);
+}
+/* ===== Footer (multi-column) ===== */
+/* ===== Simplified Footer (No Scroll Button) ===== */
+.site-footer {
+  background: #1e1e1e;
+  color: #d0d0d0;
+  border-top: 1px solid var(--line);
+  margin-top: 40px;
+}
+
+.footer-simple {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 28px 0 22px;
+  text-align: center;
+}
+
+
+
+/* Horizontal categories */
+.footer-cats {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-cats a {
+  color: #d0d0d0;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.footer-cats a:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Socials */
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #2a2a2a;
+  color: #fff;
+  transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background: var(--red);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Bottom bar */
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  background: #191919;
+}
+
+.footer-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+}
+
+.footer-links-inline a {
+  color: #cfcfcf;
+  text-decoration: none;
+}
+
+.footer-links-inline a:hover {
+  color: var(--red);
+}
+
+/* Responsive tweaks */
+@media (max-width: 560px) {
+  .footer-bottom-row {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+
+/* Contact section */
+.contact-section {
+  text-align:center;
+}
+
 form{
-  background:#fff;
+  background:var(--card);
   padding:18px;
   border:1px solid var(--line);
   border-radius:10px;
   max-width:520px;
+  margin:0 auto;
 }
 label{ display:block; margin:10px 0 6px; }
 input,textarea{
   width:100%;
   padding:10px;
-  border:1px solid #cdd3da;
+  border:1px solid var(--line);
   border-radius:8px;
   margin-bottom:12px;
+  background:#181818;
+  color:var(--ink);
   font:inherit;
 }
-button{ all:unset; }
-button.btn{ cursor:pointer; }
