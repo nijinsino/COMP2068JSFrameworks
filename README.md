@@ -8,6 +8,9 @@ It contains four main pages:
 -Projects  
 -Contact  
 
+## live link
+
+https://nijin-portfolio-elr6.onrender.com
 
 # links
 
