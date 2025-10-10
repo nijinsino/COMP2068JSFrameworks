@@ -1,55 +1,118 @@
-<!-- Hero Section -->
-<section id="home" class="card hero">
-  <h1>Hi, I'm Nijin 👋</h1>
-  <p class="lead">
-    A Computer Programming student at Georgian College passionate about web development, problem-solving, and coding cool projects.
-  </p>
-  <a href="#projects" class="btn">View My Work</a>
-</section>
-
-<!-- About Section -->
-<section id="about" class="section card">
-  <h2>About Me</h2>
-  <p>
-    I’m currently studying Computer Programming at Georgian College. I enjoy learning how to build web applications using modern tools like Node.js, Express, and Handlebars.
-  </p>
-  <p>
-    Coding isn’t just my coursework — it’s also my hobby. I spend time exploring new frameworks, experimenting with code, and solving challenges. My goal is to grow into a full-stack web developer and work on projects that make a real impact.
-  </p>
-</section>
-
-<!-- Skills Section -->
-<section id="skills" class="section card">
-  <h2>Skills</h2>
-  <ul>
-    <li><strong>Languages:</strong> JavaScript, Python, Java, C++</li>
-    <li><strong>Web:</strong> HTML5, CSS3, Node.js, Express, Handlebars</li>
-    <li><strong>Tools:</strong> Git, GitHub, VS Code, Postman</li>
-  </ul>
-</section>
-
-<!-- Projects Section -->
-<section id="projects" class="section card">
-  <h2>Projects</h2>
-
-  <div class="project">
-    <h3>Portfolio Website</h3>
-    <p>This website you are viewing right now! Built using Node.js, Express, and Handlebars. Hosted on Render.</p>
-    <a href="https://github.com/YOUR_GITHUB/portfolio" target="_blank" class="btn">View on GitHub</a>
-  </div>
-
-  <div class="project">
-    <h3>Weather App</h3>
-    <p>A simple weather application that fetches real-time weather data using an API.</p>
-    <a href="https://github.com/YOUR_GITHUB/weather-app" target="_blank" class="btn">View on GitHub</a>
-  </div>
-
-  <div class="project">
-    <h3>To-Do App</h3>
-    <p>A task manager application where users can add, edit, and delete tasks — built with vanilla JavaScript.</p>
-    <a href="https://github.com/nijinsino" target="_blank" class="btn">View on GitHub</a>
+{{!-- here goes the intro section --}}
+<section class="home">
+  <div class="container home-intro">
+    <h1>Hi, I’m Nijin 👋</h1>
+    <p class="lead">
+      A Computer Programming student at Georgian College, passionate about web development and building modern, responsive websites.
+    </p>
+    <div class="intro-buttons">
+      <a href="#projects" class="btn">View My Projects</a>
+      
+    </div>
   </div>
 </section>
+
+{{!-- this is the about section --}}
+<section class="about-section" id="about">
+  <div class="container">
+    <h1>About Me</h1>
+    <p class="intro">
+      Hi, I'm <strong>Nijin</strong> —a passionate Computer Programming student at Georgian College, Barrie.
+      I love building web applications and learning new technologies that make the web more interactive and user-friendly.
+    </p>
+
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Who I Am</h2>
+        <p>
+          I'm a developer who enjoys creating modern, clean, and responsive websites using
+          <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, and <strong>Node.js</strong>.
+        </p>
+        <p>
+          I started coding because I wanted to turn my ideas into real digital experiences.
+          Now, I'm constantly improving my skills in full-stack development and aiming to become a professional web developer.
+        </p>
+      </div>
+
+      <div class="about-skills">
+        <h2>My Skills</h2>
+        <div class="skills-list">
+          <span class="skill">HTML</span>
+          <span class="skill">CSS</span>
+          <span class="skill">JavaScript</span>
+          <span class="skill">Node.js</span>
+          <span class="skill">Express.js</span>
+          <span class="skill">GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="goals">
+      <h2>My Goal</h2>
+      <p>
+        My goal is to become a skilled <strong>Web Developer</strong> and work on real-world projects that make a difference.
+        I’m always learning something new — currently exploring Express and Handlebars to build better backend systems.
+      </p>
+    </div>
+  </div>
+</section>
+
+{{!-- project section --}}
+<section class="projects-section" id="projects">
+  <div class="container">
+    <h1>My Projects</h1>
+    <p class="intro">
+      Here are a few of the projects I’ve worked on recently — small but meaningful steps in my journey as a web developer.
+    </p>
+
+   <div class="projects-grid">
+      <!-- Project 1 -->
+      <div class="project-card">
+        <h2>🎬 Movie Info Website</h2>
+        <p>
+          A web application that displays a list of movies with their ratings and details.  
+          Users can search for a movie and get its description, rating, and poster instantly.  
+          Built using **HTML**, **CSS**, and **JavaScript** with API integration for real-time data.
+        </p>
+        <a href="https://github.com/nijinsino/COMP-1073-Assignment-4" target="_blank" class="btn-outline">View on GitHub</a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="project-card">
+        <h2>🧾 Employee Leave Request System</h2>
+        <p>
+          A <strong>python based web app</strong> that allows employees to request leaves and download leave reports.  
+          Useful for organizations to manage attendance and approvals efficiently.  
+          Built using **Flask** and **SQLite**, with a clean and simple interface.
+        </p>
+        <a href="https://github.com/nijinsino/employee-leave-system" target="_blank" class="btn-outline">View on GitHub</a>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="project-card">
+        <h2>🌱 Agriculture App (React Native)</h2>
+        <p>
+          A <strong> mobile application</strong>  designed to support farmers and gardeners.  
+          Users can explore different fruits and plants, and order seeds directly through the app.  
+          Developed using **React Native**, focused on accessibility and clean UI.
+        </p>
+        <a href="https://github.com/nijinsino/projectexpo" target="_blank" class="btn-outline">View on GitHub</a>
+      </div>      <!-- Project 4 -->
+      <div class="project-card">
+        <h2>💪 Protein Store Website</h2>
+        <p>
+          A responsive website that displays a wide variety of protein products with descriptions and prices.  
+          Built using **HTML**, **CSS**, and **JavaScript**, it features a clean layout and interactive elements.  
+          This project helped me strengthen my understanding of UI/UX and web fundamentals.
+        </p>
+        <a href="https://github.com/nijinsino/css-final-project" target="_blank" class="btn-outline">View on GitHub</a>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
 
 <!-- Contact Section -->
 <section id="contact" class="section card contact-section">
