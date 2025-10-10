@@ -14,3 +14,10 @@
 
   <button class="btn" type="submit">Send</button>
 </form>
+{{#if flash}}
+<script>
+  // Show success message when form submitted successfully
+  alert("{{flash}}");
+</script>
+{{/if}}
+
