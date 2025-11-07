@@ -21,11 +21,10 @@ router.get('/contact', (req, res) => {
   res.render('contact', { title: 'Contact Me' });
 });
 
-// POST /contact (form submit)
+// Contact form submit
 router.post('/contact', (req, res) => {
   const { name, email, message } = req.body || {};
 
-  // validation
   if (!name || !email || !message) {
     return res.status(400).render('contact', {
       title: 'Contact Me',
@@ -34,8 +33,8 @@ router.post('/contact', (req, res) => {
     });
   }
 
-  // ✅ redirect back to home with success banner
-  res.redirect('/#contact-sent');
+  // rediret
+  return res.redirect('/?sent=true');
 });
 
 module.exports = router;

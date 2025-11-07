@@ -10,7 +10,7 @@ It contains four main pages:
 
 ## live link
 
-https://nijin-portfolio-elr6.onrender.com
+https://comp2068jsframeworks-5qw2.onrender.com
 
 # links
 
