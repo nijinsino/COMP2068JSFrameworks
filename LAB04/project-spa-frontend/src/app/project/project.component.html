@@ -1,0 +1,22 @@
+<h1>Project Tracker</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Due Date</th>
+      <th>Course</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- this goes through
+      projects and display
+       each project's details -->
+    <tr *ngFor="let p of projects">
+      <td>{{ p.Name }}</td>
+      <td>{{ p.DueDate | date:'yyyy-MM-dd' }}</td>
+      <td>{{ p.Course }}</td>
+    </tr>
+  </tbody>
+</table>
