@@ -1,3 +1,4 @@
+// routes/projects.js
 const express = require('express');
 const router = express.Router();
 const Project = require('../models/project');
@@ -5,6 +6,7 @@ const Project = require('../models/project');
 // get all projects
 router.get('/', async (req, res) => {
   try {
+    //this will fetch all projects from the database
     const projects = await Project.find();
     res.status(200).json(projects);
   } catch (err) {
