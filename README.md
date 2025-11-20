@@ -55,3 +55,34 @@ https://fontawesome.com/icons   for icons
 -Computer Programming
 -200594634
 -Fall 2025
+
+
+
+
+## project spa part 1 and 2
+## backend
+- Used Express Generator to generate the project
+- added required folders
+- installed required package npm i mongoose dotenv
+
+-updated app.js
+- connected API to mongoDB 
+I have implemented all 
+GET,POST,PUT,DELETE
+
+- added CORS support
+
+## frontend
+
+-created angular project
+-created project component
+
+- added bootstrap to the main html file
+-added logic to all
+example- used  ngOnInit() to load projects
+
+-in project.component.html
+-added table for listing projects
+-delete and edit buttons
+-form for  adding and editing
+-ngIf is controlling save new and update function
