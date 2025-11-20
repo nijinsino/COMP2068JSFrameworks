@@ -1,22 +1,108 @@
-<h1>Project Tracker</h1>
-
 <table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Name</th>
       <th>Due Date</th>
       <th>Course</th>
+       <th>Delete</th>  
+      <th>Edit</th>  
     </tr>
   </thead>
-
   <tbody>
-    <!-- this goes through
-      projects and display
-       each project's details -->
     <tr *ngFor="let p of projects">
-      <td>{{ p.Name }}</td>
-      <td>{{ p.DueDate | date:'yyyy-MM-dd' }}</td>
-      <td>{{ p.Course }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.dueDate | date:'yyyy-MM-dd' }}</td>
+      <td>{{ p.course }}</td>
+       <td>
+        <!-- edit button -->
+       <button 
+  type="button" 
+  class="btn btn-danger btn-sm" 
+  (click)="deleteProject(p._id)">
+  Delete
+</button>
+      </td>
+
+     <!-- edit button -->
+      <td>
+      <button 
+  type="button" 
+  class="btn btn-info btn-sm" 
+  (click)="selectProject(p)">
+  Edit
+</button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<form>
+  <fieldset class="form-group">
+
+    <div class="form-group row mb-3">
+      <label class="col-3 col-form-label" for="name">Name</label>
+      <div class="col-9">
+     
+        <input
+          id="name"
+          type="text"
+          required
+          [(ngModel)]="name"
+          name="name"
+          class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label class="col-3 col-form-label" for="dueDate">Due Date</label>
+      <div class="col-9">
+        <input
+          id="dueDate"
+          type="date"
+          required
+          [(ngModel)]="dueDate"
+          name="dueDate"
+          class="form-control">
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <label class="col-3 col-form-label" for="course">Course</label>
+      <div class="col-9">
+        <input
+          id="course"
+          type="text"
+          required
+          [(ngModel)]="course"
+          name="course"
+          class="form-control">
+      </div>
+    </div>
+
+    <!-- Save New -->
+    <button
+      type="button"
+      class="btn btn-primary offset-3 me-2"
+      *ngIf="!_id"
+      (click)="addProject()">
+      Save New
+    </button>
+
+    <!-- Update -->
+    <button
+      type="button"
+      class="btn btn-info offset-3 me-2"
+      *ngIf="_id"
+      (click)="updateProject()">
+      Update
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="clearForm()">
+      Clear
+    </button>
+
+  </fieldset>
+</form>
