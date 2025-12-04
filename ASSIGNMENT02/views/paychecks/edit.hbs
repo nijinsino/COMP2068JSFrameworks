@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow">
+      <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Edit Paycheck</h4>
+      </div>
+      <div class="card-body">
+        {{#if error}}
+          <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
+        
+        <form action="/paychecks/edit/{{paycheck._id}}" method="POST">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title *</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{paycheck.title}}" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount *</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="number" class="form-control" id="amount" name="amount" step="0.01" min="0" value="{{paycheck.amount}}" required>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <label for="date" class="form-label">Date *</label>
+            <input type="date" class="form-control" id="date" name="date" value="{{formatDateInput paycheck.date}}" required>
+          </div>
+          
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3">{{paycheck.description}}</textarea>
+          </div>
+          
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">Update Paycheck</button>
+            <a href="/paychecks" class="btn btn-outline-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

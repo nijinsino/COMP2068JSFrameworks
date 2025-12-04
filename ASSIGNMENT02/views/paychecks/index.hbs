@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>My Paychecks</h1>
+  <a href="/paychecks/add" class="btn btn-success">+ Add Paycheck</a>
+</div>
+
+<!-- Search Bar -->
+<div class="card mb-4">
+  <div class="card-body">
+    <form action="/paychecks/search" method="GET" class="d-flex gap-2">
+      <input type="text" class="form-control" name="q" placeholder="Search by title or description..." value="{{searchQuery}}">
+      <button type="submit" class="btn btn-primary">Search</button>
+      {{#if searchQuery}}
+        <a href="/paychecks" class="btn btn-outline-secondary">Clear</a>
+      {{/if}}
+    </form>
+  </div>
+</div>
+
+{{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+{{#if success}}
+  <div class="alert alert-success">{{success}}</div>
+{{/if}}
+
+{{#if paychecks}}
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each paychecks}}
+              <tr>
+                <td>{{this.title}}</td>
+                <td class="text-success fw-bold">+${{formatAmount this.amount}}</td>
+                <td>{{formatDate this.date}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                  <a href="/paychecks/edit/{{this._id}}" class="btn btn-sm btn-outline-primary">Edit</a>
+
+                  <button 
+                    type="button" 
+                    class="btn btn-sm btn-outline-danger"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#deleteModal{{this._id}}">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALL DELETE MODALS MOVED OUTSIDE TABLE -->
+  {{#each paychecks}}
+    <div class="modal fade" id="deleteModal{{this._id}}" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <div class="modal-body">
+            <p>Delete paycheck "<strong>{{this.title}}</strong>"?</p>
+            <p class="text-danger">This action cannot be undone.</p>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+            <form action="/paychecks/delete/{{this._id}}" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+{{else}}
+  <div class="alert alert-info">
+    <h5>No paychecks found</h5>
+    <p>Start tracking your income by adding your first paycheck!</p>
+    <a href="/paychecks/add" class="btn btn-success">Add Paycheck</a>
+  </div>
+{{/if}}

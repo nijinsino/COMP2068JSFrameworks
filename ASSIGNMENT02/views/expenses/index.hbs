@@ -1,0 +1,97 @@
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>My Expenses</h1>
+  <a href="/expenses/add" class="btn btn-danger">+ Add Expense</a>
+</div>
+
+<!-- Search Bar -->
+<div class="card mb-4">
+  <div class="card-body">
+    <form action="/expenses/search" method="GET" class="d-flex gap-2">
+      <input type="text" class="form-control" name="q" placeholder="Search..." value="{{searchQuery}}">
+      <button type="submit" class="btn btn-primary">Search</button>
+      {{#if searchQuery}}
+        <a href="/expenses" class="btn btn-outline-secondary">Clear</a>
+      {{/if}}
+    </form>
+  </div>
+</div>
+
+{{#if error}}
+  <div class="alert alert-danger">{{error}}</div>
+{{/if}}
+{{#if success}}
+  <div class="alert alert-success">{{success}}</div>
+{{/if}}
+
+{{#if expenses}}
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Amount</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each expenses}}
+              <tr>
+                <td>{{this.title}}</td>
+                <td class="text-danger fw-bold">-${{formatAmount this.amount}}</td>
+                <td><span class="badge bg-secondary">{{this.category}}</span></td>
+                <td>{{formatDate this.date}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                  <a href="/expenses/edit/{{this._id}}" class="btn btn-sm btn-outline-primary">Edit</a>
+
+                  <!-- Delete Button -->
+                  <button type="button" class="btn btn-sm btn-outline-danger"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal{{this._id}}">
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- All Delete Modals (OUTSIDE the table) -->
+  {{#each expenses}}
+    <div class="modal fade" id="deleteModal{{this._id}}" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to delete "<strong>{{this.title}}</strong>"?</p>
+            <p class="text-danger">This action cannot be undone.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+            <form action="/expenses/delete/{{this._id}}" method="POST" class="d-inline">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+
+{{else}}
+  <div class="alert alert-info">
+    <h5>No expenses found</h5>
+    <p>Start tracking your expenses by adding your first one.</p>
+    <a href="/expenses/add" class="btn btn-danger">Add Expense</a>
+  </div>
+{{/if}}

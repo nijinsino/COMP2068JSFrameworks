@@ -1,2 +1,81 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<div class="hero-section text-center py-5 mb-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-4">💰 Student Expense Tracker</h1>
+    <p class="lead mb-4">
+      Manage your finances effortlessly. Track expenses, monitor paychecks, and gain insights into your financial health.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap">
+      {{#if user}}
+        <a href="/dashboard" class="btn btn-primary btn-lg">Go to Dashboard</a>
+        <a href="/expenses" class="btn btn-outline-danger btn-lg">View Expenses</a>
+        <a href="/paychecks" class="btn btn-outline-success btn-lg">View Paychecks</a>
+      {{else}}
+        <a href="/auth/register" class="btn btn-primary btn-lg">Get Started</a>
+        <a href="/login" class="btn btn-outline-primary btn-lg">Login</a>
+ 
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="features-section py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Features</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <div class="feature-icon mb-3">📊</div>
+            <h5 class="card-title">Track Expenses</h5>
+            <p class="card-text">Record all your expenses including rent, groceries, utilities, and more with categories and dates.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <div class="feature-icon mb-3">💵</div>
+            <h5 class="card-title">Monitor Income</h5>
+            <p class="card-text">Keep track of your part-time paychecks and other income sources to understand your earnings.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <div class="feature-icon mb-3">📈</div>
+            <h5 class="card-title">Visual Insights</h5>
+            <p class="card-text">View charts and get insights about your monthly spending, savings, and financial health.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="info-section py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <h3>Why Use Student Expense Tracker?</h3>
+        <p class="lead">As an international student, managing finances can be challenging with unpredictable earnings and numerous bills.</p>
+        <ul class="list-unstyled">
+          <li class="mb-2">✅ Store all financial information in one place</li>
+          <li class="mb-2">✅ Automatic insights and savings calculations</li>
+          <li class="mb-2">✅ Monthly spending and savings monitoring</li>
+          <li class="mb-2">✅ Visual charts for better understanding</li>
+          <li class="mb-2">✅ Search functionality to find transactions quickly</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="info-card p-4">
+          <h4>Get Started Today</h4>
+          <p>Create an account and start tracking your finances in minutes!</p>
+          {{#unless user}}
+            <a href="/auth/register" class="btn btn-primary btn-lg mt-3">Sign Up Free</a>
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
