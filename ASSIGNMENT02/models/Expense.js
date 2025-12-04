@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
-
+// Expense Schema
 const expenseSchema = new mongoose.Schema({
+  //this is the fields for expenses
   title: {
     type: String,
     required: true,
