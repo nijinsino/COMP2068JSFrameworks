@@ -4,33 +4,31 @@ const passport = require('passport');
 const User = require('../models/User');
 const { ensureGuest } = require('../middleware/auth');
 
-// ======================
-// REGISTER PAGE
-// ======================
+//this is the register page
 router.get('/register', ensureGuest, (req, res) => {
   res.render('auth/register', { 
     title: 'Register'
   });
 });
+//register form submission
+//this handles creating a new user account
 
-// ======================
-// REGISTER POST
-// ======================
 router.post('/register', ensureGuest, async (req, res) => {
   try {
     const { username, email, password, confirmPassword } = req.body;
 
     // Validation
+    //check whether all fields are filled
     if (!username || !email || !password || !confirmPassword) {
       req.session.error = 'All fields are required.';
       return res.redirect('/auth/register');
     }
-
+//check if both passwords match
     if (password !== confirmPassword) {
       req.session.error = 'Passwords do not match.';
       return res.redirect('/auth/register');
     }
-
+//check password length
     if (password.length < 6) {
       req.session.error = 'Password must be at least 6 characters long.';
       return res.redirect('/auth/register');
@@ -60,18 +58,14 @@ router.post('/register', ensureGuest, async (req, res) => {
   }
 });
 
-// ======================
-// LOGIN PAGE
-// ======================
+//login page
 router.get('/login', ensureGuest, (req, res) => {
   res.render('auth/login', { 
     title: 'Login'
   });
 });
 
-// ======================
-// LOGIN POST
-// ======================
+//login post handler
 router.post('/login', ensureGuest, (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
 
@@ -100,21 +94,8 @@ router.post('/login', ensureGuest, (req, res, next) => {
   })(req, res, next);
 });
 
-// ======================
-// GITHUB OAUTH
-// ======================
-router.get('/github', passport.authenticate('github', { scope: ['user:email'] }));
 
-router.get('/github/callback',
-  passport.authenticate('github', { failureRedirect: '/auth/login' }),
-  (req, res) => {
-    res.redirect('/dashboard');
-  }
-);
-
-// ======================
-// LOGOUT (FIXED)
-// ======================
+//logout function
 router.get('/logout', (req, res, next) => {
   req.logout((err) => {
     if (err) return next(err);
