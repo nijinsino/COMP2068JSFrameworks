@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <!-- ALL DELETE MODALS MOVED OUTSIDE TABLE -->
+ 
   {{#each paychecks}}
     <div class="modal fade" id="deleteModal{{this._id}}" tabindex="-1">
       <div class="modal-dialog">
@@ -93,6 +93,7 @@
   {{/each}}
 
 {{else}}
+{{!--  No Paychecks Message --}}
   <div class="alert alert-info">
     <h5>No paychecks found</h5>
     <p>Start tracking your income by adding your first paycheck!</p>

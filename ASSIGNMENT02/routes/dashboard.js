@@ -8,28 +8,33 @@ const { ensureAuth } = require('../middleware/auth');
 router.get('/', ensureAuth, async (req, res) => {
   try {
     const userId = req.user._id;
-
+//this will fetch all expenses and paychecks for the logged-in user
     const expenses = await Expense.find({ user: userId }).lean();
     const paychecks = await Paycheck.find({ user: userId }).lean();
-
+//this is the structure
+//to hold income and expenses per month
     const monthlyData = {};
-
+//this will help to populate monthlyData with expenses and income
     expenses.forEach(expense => {
+      //convert data into a readable month-year format
       const month = new Date(expense.date).toLocaleString('default', { month: 'long', year: 'numeric' });
+      //if this month is not yet in monthlyData
+      // it will initialize it
       if (!monthlyData[month]) {
         monthlyData[month] = { expenses: 0, income: 0 };
       }
       monthlyData[month].expenses += expense.amount;
     });
-
+//this part of code is similar logic for paychecks to populate income
     paychecks.forEach(paycheck => {
       const month = new Date(paycheck.date).toLocaleString('default', { month: 'long', year: 'numeric' });
       if (!monthlyData[month]) {
         monthlyData[month] = { expenses: 0, income: 0 };
       }
+      //add income to monthly total
       monthlyData[month].income += paycheck.amount;
     });
-
+//calculate totals
     const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
     const totalIncome = paychecks.reduce((sum, p) => sum + p.amount, 0);
     const totalSavings = totalIncome - totalExpenses;
@@ -43,10 +48,10 @@ router.get('/', ensureAuth, async (req, res) => {
     const incomeData = months.map(month => monthlyData[month].income);
     const expenseData = months.map(month => monthlyData[month].expenses);
 
-    // Create boolean for color logic in template
+
     const isSavingsPositive = totalSavings > 0;
 
-    // Insight message
+    // insight message
     let insightMessage = '';
     if (currentMonthSavings > 0) {
       insightMessage = `Great job! You saved $${currentMonthSavings.toFixed(2)} this month.`;
@@ -55,7 +60,7 @@ router.get('/', ensureAuth, async (req, res) => {
     } else {
       insightMessage = 'Your income and expenses are balanced this month.';
     }
-
+//render the dashboard view with all calculated data
     res.render('dashboard', {
       title: 'Dashboard',
       user: req.user,
@@ -68,7 +73,7 @@ router.get('/', ensureAuth, async (req, res) => {
       incomeData,
       expenseData,
       monthlyData,
-      isSavingsPositive   // <-- IMPORTANT FIX
+      isSavingsPositive   
     });
 
   } catch (error) {

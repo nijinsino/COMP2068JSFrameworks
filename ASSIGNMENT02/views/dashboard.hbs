@@ -33,7 +33,7 @@
   </div>
 </div>
 
-<!-- Current Month Insight -->
+{{!-- this will display current month insights --}}
 <div class="alert alert-info mb-4">
   <h5 class="alert-heading">📊 Current Month Insight</h5>
   <p class="mb-0">{{insightMessage}}</p>
@@ -41,7 +41,7 @@
   <p class="mb-0"><strong>Current Month Savings:</strong> ${{currentMonthSavings}}</p>
 </div>
 
-<!-- Chart Section -->
+<!-- this is chart Section -->
 <div class="row mb-4">
   <div class="col-12">
     <div class="card shadow">
@@ -84,7 +84,7 @@
   const months = {{{json months}}};
   const incomeData = {{{json incomeData}}};
   const expenseData = {{{json expenseData}}};
-
+//this will create Bar Chart
   new Chart(ctx, {
     type: 'bar',
     data: {

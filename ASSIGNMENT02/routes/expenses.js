@@ -3,13 +3,14 @@ const router = express.Router();
 const Expense = require('../models/Expense');
 const { ensureAuth } = require('../middleware/auth');
 
-// Get all expenses for authenticated user
+// this will help to 
+// get all expenses for authenticated user
 router.get('/', ensureAuth, async (req, res) => {
   try {
     const expenses = await Expense.find({ user: req.user._id })
       .sort({ date: -1 })
       .lean();
-    
+    //render the expenses index view
     res.render('expenses/index', {
       title: 'My Expenses',
       expenses: expenses,
@@ -17,18 +18,19 @@ router.get('/', ensureAuth, async (req, res) => {
       error: req.session.error,
       success: req.session.success
     });
+    //catch any errors
   } catch (error) {
     req.session.error = 'Error loading expenses.';
     res.redirect('/dashboard');
   }
 });
 
-// Search expenses
+// search expenses
 router.get('/search', ensureAuth, async (req, res) => {
   try {
     const { q } = req.query;
     let expenses = [];
-    
+    // if there is a query, perform search
     if (q) {
       const searchRegex = new RegExp(q, 'i');
       expenses = await Expense.find({
@@ -44,7 +46,7 @@ router.get('/search', ensureAuth, async (req, res) => {
         .sort({ date: -1 })
         .lean();
     }
-    
+    // render the expenses index view with search results
     res.render('expenses/index', {
       title: 'My Expenses',
       expenses: expenses,

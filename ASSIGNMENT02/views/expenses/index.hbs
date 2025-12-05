@@ -63,7 +63,7 @@
     </div>
   </div>
 
-  <!-- All Delete Modals (OUTSIDE the table) -->
+{{!-- Delete Confirmation Modals --> --}}
   {{#each expenses}}
     <div class="modal fade" id="deleteModal{{this._id}}" tabindex="-1">
       <div class="modal-dialog">
@@ -89,6 +89,7 @@
   {{/each}}
 
 {{else}}
+{{!-- No expenses found --}}
   <div class="alert alert-info">
     <h5>No expenses found</h5>
     <p>Start tracking your expenses by adding your first one.</p>

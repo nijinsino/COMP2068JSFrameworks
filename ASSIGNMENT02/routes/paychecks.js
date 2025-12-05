@@ -3,13 +3,13 @@ const router = express.Router();
 const Paycheck = require('../models/Paycheck');
 const { ensureAuth } = require('../middleware/auth'); // FIXED
 
-// Get all paychecks for authenticated user
+// get all paychecks for authenticated user
 router.get('/', ensureAuth, async (req, res) => {
   try {
     const paychecks = await Paycheck.find({ user: req.user._id })
       .sort({ date: -1 })
       .lean();
-
+//render the paychecks index view
     res.render('paychecks/index', {
       title: 'My Paychecks',
       paychecks,
@@ -17,7 +17,7 @@ router.get('/', ensureAuth, async (req, res) => {
       error: req.session.error,
       success: req.session.success
     });
-
+//catch any errors
   } catch (error) {
     req.session.error = 'Error loading paychecks.';
     res.redirect('/dashboard');
@@ -44,7 +44,7 @@ router.get('/search', ensureAuth, async (req, res) => {
         .sort({ date: -1 })
         .lean();
     }
-
+// render the paychecks index view with search results
     res.render('paychecks/index', {
       title: 'My Paychecks',
       paychecks,
